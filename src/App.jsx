@@ -27,7 +27,7 @@ const App = () => {
 
   //Debounce the seaarch term to prevent making too many API requests
   // By waiting for the user to stop typing for 500ms before updating the debounced search term
-  useDebounce(() => setDebounceSearchTerm(searchTerm), 600, [searchTerm]);
+  useDebounce(() => setDebounceSearchTerm(searchTerm), 700, [searchTerm]);
 
   const fetchMovies = async (query = " ") => {
     setIsLoading(true);
@@ -111,7 +111,9 @@ const App = () => {
           <h2 className="">All Movies</h2>
 
           {isLoading ? (
-            <Spinner />
+            <div className="flex justify-center items-center mt-10">
+              <Spinner />
+            </div>
           ) : errorMessage ? (
             <p className="text-red-500"> {errorMessage} </p>
           ) : (
